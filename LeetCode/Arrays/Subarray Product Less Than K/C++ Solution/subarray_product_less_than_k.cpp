@@ -12,6 +12,7 @@ public:
             while(prod >= k && i < j) {
                 prod /= nums[i++]; //removing first number to slide the window
             }
+            
             if(prod < k) {
                 int len = j - i + 1;
                 count += len;
