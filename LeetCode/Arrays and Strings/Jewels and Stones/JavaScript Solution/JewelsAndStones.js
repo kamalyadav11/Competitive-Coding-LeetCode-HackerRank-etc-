@@ -5,14 +5,17 @@
  */
 var numJewelsInStones = function(J, S) {
     const hash = {}; let count = 0;
+     for(let char of J) {
+        hash[char] = true;
+    }
+    
     for(let i = 0; i < S.length; i++) {
-        for(let j = 0; j < J.length; j++) {
-            if(S[i] === J[j]) {
-                count++;
-            }
+        if(hash[S[i]] === true) {
+            count++;
         }
     }
+    
     return count;
 };
 
-console.log(numJewelsInStones("z", "ZZ"))
+console.log(numJewelsInStones("zZ", "ZZ"))
