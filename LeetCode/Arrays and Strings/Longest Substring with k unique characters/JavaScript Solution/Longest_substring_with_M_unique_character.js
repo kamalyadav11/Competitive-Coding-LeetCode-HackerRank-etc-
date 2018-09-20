@@ -1,4 +1,4 @@
-const longestSubstringUNiqueCharacter = (str, k) => {
+const longestSubstringUNiqueCharacter = (str, k) => {]
 	let start = 0, end = 0, maxlen = 0, startWindow = 0;
 	const hashMap = {};
 
