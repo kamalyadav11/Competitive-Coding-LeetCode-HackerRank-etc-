@@ -3,59 +3,50 @@ using namespace std;
 
 struct node {
 	int data;
-	node* next; //next has a data type of node, so it can point to other variable of data type of node
+	struct node *next;
 };
 
-int get_length (node* head) {
-	int count = 0;
-	while(head != NULL) {
-		head = head->next;
-		count++;
-	}
-	return count;
-}
+class linked_list {
+	node *head, *tail;
+	public:
+		linked_list() {
+			head = NULL;
+			tail = NULL;
+		}
 
-struct node* get_nth_element(struct node* head, int n) {
-	if(n < 0) {
-		return NULL; //out  of bound check for -ve numbers
-	}
+		// struct node* createNode(int data) {
+		// 	node *temp = new node;
+		// 	temp -> data = data;
+		// 	temp -> next = NULL;
+		// 	return temp;
+		// }
 
-	int i = 0;
-	while(head != NULL && i < n) {
-		head = head -> next;
-		i++;
-	}
-	return head;
-}
+		int insertAtBeginnning(int data) {
+			node *temp = new node;
+			temp -> data = data;
+			temp -> next = head;
+			head = temp;
+			return temp->data;
+		}
 
-int pop_first_elememt(struct node** headRef) {
-	
-}
-
-void append_at_last(struct node** headRef, int data) {
-	if(*headRef == NULL) { //handle a 0 element lit as a special case
-		*headRef = (struct node *)malloc(sizeof(struct node));
-		(*headRef) -> data = data;
-		(*headRef) -> next = NULL;
-		return;
-	}
-
-	struct node* head = *headRef;
-	while((*headRef)->next != NULL) {
-		head = head -> next;
-	} //at the end of this while loop we have head pointing to the last element
-
-	head -> next = (struct node*)malloc(sizeof(struct node));
-	head -> next -> data = data;
-	head -> next -> next = NULL;
-}
+		int displayList() {
+			struct node *temp;
+			temp = head; int count = 0;
+			while(temp != NULL) {
+				// cout<<temp -> data;
+				// cout<<endl;
+				count++;
+				temp = temp -> next;//checks if temp.next contains null
+			}
+			return count;
+		}
+};
 
 int main() {
+	linked_list l;
+	cout<<l.insertAtBeginnning(5)<<endl;
+	cout<<l.insertAtBeginnning(514)<<endl;
+	cout<<l.insertAtBeginnning(5415)<<endl;
+	cout<<l.displayList()<<endl;
 
-	int n = 1;
-	node* head = NULL;
-	head -> data = 2;
-	// cout<<get_length(head)<<endl;
-	// cout<<get_nth_element(head,n)<<endl;
-	cout<<append_at_last(head);
-} 
+}
